@@ -12,8 +12,9 @@
   "module": "./dist/twilio-video-stimulus-controller.modern.js",
   "unpkg": "./dist/twilio-video-stimulus-controller.umd.js",
   "scripts": {
-    "build": "microbundle src/twilio-video-stimulus-controller.js -f umd",
-    "dev": "microbundle watch"
+    "build": "microbundle",
+    "dev": "npm run clean && microbundle watch",
+    "clean": "rm -f dist/*"
   },
   "keywords": [
     "twilio",
@@ -25,8 +26,8 @@
   "author": "bluepostit",
   "license": "ISC",
   "dependencies": {
-    "stimulus": "^3.0.1",
-    "twilio-video": "^2.18.1"
+    "twilio-video": "^2.18.1",
+    "stimulus": "^3.0.1"
   },
   "devDependencies": {
     "microbundle": "^0.14.2"

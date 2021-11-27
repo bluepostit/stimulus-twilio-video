@@ -102,7 +102,6 @@ class TwilioVideoCall extends Controller {
 
   joinCall(event) {
     event.preventDefault()
-    console.log('time to call...')
     this._showLocalVideo(true)
 
     connect(this.accessTokenValue, {
@@ -137,6 +136,6 @@ class TwilioVideoCall extends Controller {
   buddyJoined() {}
 
   buddyLeft() {}
-}
+};
 
 export default TwilioVideoCall;
