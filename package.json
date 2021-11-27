@@ -1,0 +1,34 @@
+{
+  "name": "stimulus-twilio-video",
+  "version": "1.0.0",
+  "description": "Stimulus controller for video chat with Twilio",
+  "type": "module",
+  "source": "src/twilio-video-stimulus-controller.js",
+  "exports": {
+    "require": "./dist/twilio-video-stimulus-controller.cjs",
+    "default": "./dist/twilio-video-stimulus-controller.modern.js"
+  },
+  "main": "./dist/twilio-video-stimulus-controller.cjs",
+  "module": "./dist/twilio-video-stimulus-controller.modern.js",
+  "unpkg": "./dist/twilio-video-stimulus-controller.umd.js",
+  "scripts": {
+    "build": "microbundle src/twilio-video-stimulus-controller.js -f umd",
+    "dev": "microbundle watch"
+  },
+  "keywords": [
+    "twilio",
+    "video",
+    "chat",
+    "stimulus",
+    "controller"
+  ],
+  "author": "bluepostit",
+  "license": "ISC",
+  "dependencies": {
+    "stimulus": "^3.0.1",
+    "twilio-video": "^2.18.1"
+  },
+  "devDependencies": {
+    "microbundle": "^0.14.2"
+  }
+}
