@@ -27,7 +27,7 @@ application.register('video-call', TwilioVideoController)
 ## Add Stimulus [values](https://stimulus.hotwired.dev/reference/values), [targets](https://stimulus.hotwired.dev/reference/targets) and [actions](https://stimulus.hotwired.dev/reference/actions) to your HTML
 
 ### 1. The wrapper container
-The wrapper container needs the `data-controller` attribute, as well as a few **[values](https://stimulus.hotwired.dev/reference/values)**. The examples below assume assume that you registered the controller with the name `video-call`, as above.
+The wrapper container needs the `data-controller` attribute, as well as a few **[values](https://stimulus.hotwired.dev/reference/values)**. The examples below assume that you registered the controller with the name `video-call`, as above.
 
 ```html
 <div data-controller="video-call"
