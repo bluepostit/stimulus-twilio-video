@@ -17,7 +17,7 @@ npm add stimulus-twilio-video
 ## [Register](https://stimulus.hotwired.dev/reference/controllers#registration) the controller with your Stimulus application
 
 ```js
-import { Application } from "stimulus"
+import { Application } from 'stimulus'
 import TwilioVideoController from 'stimulus-twilio-video'
 
 const application = Application.start()
@@ -49,6 +49,7 @@ The wrapper container needs the `data-controller` attribute, as well as a few **
 This target will be used to attach and display the user's chat buddy's webcam video:
 ```html
 <div data-video-call-target="buddyVideo"></div>
+```
 
 This target will be used to attach and display the user's own webcam video:
 ```html
