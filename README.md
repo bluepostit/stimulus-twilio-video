@@ -99,3 +99,6 @@ export default class extends TwilioVideoController {
 }
 
 ```
+
+## Demo App
+[Here](https://github.com/bluepostit/twilio-demo-stimulus) is a Rails application which uses this package to build a simple one-to-one chat application.
