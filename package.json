@@ -1,6 +1,6 @@
 {
   "name": "stimulus-twilio-video",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Stimulus controller for video chat with Twilio",
   "type": "module",
   "source": "src/twilio-video-stimulus-controller.js",
@@ -15,7 +15,7 @@
     "build": "microbundle",
     "dev": "npm run clean && microbundle watch",
     "clean": "rm -f dist/*",
-    "prepublish": "npm run clean && npm run build"
+    "prepare": "npm run clean && npm run build"
   },
   "keywords": [
     "twilio",
