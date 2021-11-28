@@ -8,13 +8,18 @@
     "require": "./dist/twilio-video-stimulus-controller.cjs",
     "default": "./dist/twilio-video-stimulus-controller.modern.js"
   },
+  "files": [
+    "dist/*"
+  ],
   "main": "./dist/twilio-video-stimulus-controller.cjs",
   "module": "./dist/twilio-video-stimulus-controller.modern.js",
   "unpkg": "./dist/twilio-video-stimulus-controller.umd.js",
   "scripts": {
     "build": "microbundle",
-    "dev": "npm run clean && microbundle watch",
     "clean": "rm -f dist/*",
+    "dev": "npm run clean && microbundle watch",
+    "lint": "prettier --check src/*.js",
+    "format": "prettier --write src/*.js",
     "prepare": "npm run clean && npm run build"
   },
   "keywords": [
@@ -31,6 +36,7 @@
     "stimulus": "^3.0.1"
   },
   "devDependencies": {
-    "microbundle": "^0.14.2"
+    "microbundle": "^0.14.2",
+    "prettier": "^2.5.0"
   }
 }

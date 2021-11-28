@@ -11,29 +11,26 @@ class TwilioVideoCall extends Controller {
     }
   }
 
-  static targets = [
-    'localVideo',
-    'buddyVideo'
-  ]
+  static targets = ['localVideo', 'buddyVideo']
 
   connect() {
     if (!this.accessTokenValue) {
-      console.error("You must provide a value for access-token!")
+      console.error('You must provide a value for access-token!')
     }
     if (!this.roomIdValue) {
-      console.error("You must provide a value for room-id!")
+      console.error('You must provide a value for room-id!')
     }
     if (!this.localVideoTarget) {
-      console.error("You must provide a `local-video-target`!")
+      console.error('You must provide a `local-video-target`!')
     }
     if (!this.buddyVideoTarget) {
-      console.error("You must provide a `buddy-video-target`!")
+      console.error('You must provide a `buddy-video-target`!')
     }
   }
 
   _showLocalVideo(visible) {
     if (visible) {
-      createLocalVideoTrack().then((track) => {
+      createLocalVideoTrack().then(track => {
         this.localVideoTarget.appendChild(track.attach())
       })
     } else {
@@ -51,7 +48,7 @@ class TwilioVideoCall extends Controller {
     } else {
       const streamElements = this.buddyVideoTarget.querySelectorAll('video, audio')
       if (streamElements) {
-        streamElements.forEach((element) => {
+        streamElements.forEach(element => {
           element.parentNode.removeChild(element)
         })
       }
@@ -108,19 +105,21 @@ class TwilioVideoCall extends Controller {
       name: this.roomIdValue,
       audio: true,
       video: { width: this.buddyVideoWidthValue }
-    }).then(room => {
-      console.log(`Successfully joined a room: ${room}`)
-      this.room = room
-      this._onSelfConnect()
+    }).then(
+      room => {
+        console.log(`Successfully joined a room: ${room}`)
+        this.room = room
+        this._onSelfConnect()
 
-      room.on('participantConnected', (buddy) => this._onBuddyConnect(buddy))
-      room.on('participantDisconnected', () => this._onBuddyDisconnect())
-      room.on('disconnected', () => this.endCall())
-    }, error => {
-      console.error(`Unable to connect to room: ${error.message}`)
-    })
+        room.on('participantConnected', buddy => this._onBuddyConnect(buddy))
+        room.on('participantDisconnected', () => this._onBuddyDisconnect())
+        room.on('disconnected', () => this.endCall())
+      },
+      error => {
+        console.error(`Unable to connect to room: ${error.message}`)
+      }
+    )
   }
-
 
   endCall(event) {
     event && event.preventDefault()
@@ -136,6 +135,6 @@ class TwilioVideoCall extends Controller {
   buddyJoined() {}
 
   buddyLeft() {}
-};
+}
 
-export default TwilioVideoCall;
+export default TwilioVideoCall
