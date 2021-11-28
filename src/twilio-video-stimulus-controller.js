@@ -1,7 +1,9 @@
+'use strict'
+
 import { Controller } from 'stimulus'
 import { connect, createLocalVideoTrack } from 'twilio-video'
 
-class TwilioVideoCall extends Controller {
+export default class extends Controller {
   static values = {
     accessToken: String,
     roomId: String,
@@ -136,5 +138,3 @@ class TwilioVideoCall extends Controller {
 
   buddyLeft() {}
 }
-
-export default TwilioVideoCall

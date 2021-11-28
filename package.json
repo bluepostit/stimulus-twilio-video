@@ -1,19 +1,12 @@
 {
   "name": "stimulus-twilio-video",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "Stimulus controller for video chat with Twilio",
-  "type": "module",
   "source": "src/twilio-video-stimulus-controller.js",
-  "exports": {
-    "require": "./dist/twilio-video-stimulus-controller.cjs",
-    "default": "./dist/twilio-video-stimulus-controller.modern.js"
-  },
   "files": [
     "dist/*"
   ],
-  "main": "./dist/twilio-video-stimulus-controller.cjs",
-  "module": "./dist/twilio-video-stimulus-controller.modern.js",
-  "unpkg": "./dist/twilio-video-stimulus-controller.umd.js",
+  "main": "./dist/twilio-video-stimulus-controller.js",
   "scripts": {
     "build": "microbundle",
     "clean": "rm -f dist/*",
@@ -31,11 +24,17 @@
   ],
   "author": "bluepostit",
   "license": "ISC",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/bluepostit/stimulus-twilio-video.git"
+  },
   "dependencies": {
-    "twilio-video": "^2.18.1",
-    "stimulus": "^3.0.1"
+    "stimulus": "^3.0.1",
+    "twilio-video": "^2.18.1"
   },
   "devDependencies": {
+    "@babel/plugin-proposal-class-properties": "^7.16.0",
+    "babel-preset-env": "^1.7.0",
     "microbundle": "^0.14.2",
     "prettier": "^2.5.0"
   }
