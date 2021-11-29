@@ -1,6 +1,6 @@
 {
   "name": "stimulus-twilio-video",
-  "version": "1.0.7",
+  "version": "1.0.8",
   "description": "Stimulus controller for video chat with Twilio",
   "source": "src/twilio-video-stimulus-controller.js",
   "files": [
