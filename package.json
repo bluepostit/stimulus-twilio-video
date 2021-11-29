@@ -13,7 +13,7 @@
     "dev": "npm run clean && microbundle watch",
     "lint": "prettier --check src/*.js",
     "format": "prettier --write src/*.js",
-    "prepare": "npm run clean && npm run build"
+    "prepare": "install-peers && npm run clean && npm run build"
   },
   "keywords": [
     "twilio",
@@ -29,12 +29,15 @@
     "url": "https://github.com/bluepostit/stimulus-twilio-video.git"
   },
   "dependencies": {
-    "stimulus": "^3.0.1",
     "twilio-video": "^2.18.1"
+  },
+  "peerDependencies": {
+    "stimulus": "^3.0.1"
   },
   "devDependencies": {
     "@babel/plugin-proposal-class-properties": "^7.16.0",
     "babel-preset-env": "^1.7.0",
+    "install-peers-cli": "^2.2.0",
     "microbundle": "^0.14.2",
     "prettier": "^2.5.0"
   }
