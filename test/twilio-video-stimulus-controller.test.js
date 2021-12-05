@@ -3,10 +3,11 @@ import StimulusTwilioController from '../src/twilio-video-stimulus-controller'
 
 const buildView = () => {
   const html = `
-  <div data-controller="video-call"
-  data-video-call-access-token-value="twilio-jwt"
-  data-video-call-room-id-value="room-id"
-  data-video-call-buddy-video-width-value="video-width"
+  <div id="controller"
+    data-controller="video-call"
+    data-video-call-access-token-value="twilio-jwt"
+    data-video-call-room-id-value="room-id"
+    data-video-call-buddy-video-width-value="video-width"
   >
     <div id="local-video" data-video-call-target="localVideo"></div>
     <div id="buddy-video" data-video-call-target="buddyVideo"></div>
@@ -17,25 +18,47 @@ const buildView = () => {
   document.body.innerHTML = html
 }
 
+const runSoon = async callback => {
+  return new Promise((resolve, _reject) => {
+    setTimeout(() => {
+      callback()
+      resolve()
+    }, 100)
+  })
+}
+
 describe('TwilioVideoStimulusController', () => {
+  let application
+
+  beforeEach(() => {
+    buildView()
+    application = Application.start()
+    application.register('video-call', StimulusTwilioController)
+  })
+
   describe('#joinCall', () => {
     it('adds a video element to the localVideo target', async () => {
-      buildView()
       const localVideo = document.getElementById('local-video')
-      expect(localVideo.innerHTML).toBe('')
 
-      const application = Application.start()
-      application.register('video-call', StimulusTwilioController)
-
-      await new Promise((resolve, _reject) => {
-        setTimeout(() => {
-          const joinCallButton = document.getElementById('btn-join-call')
-          joinCallButton.click()
-
-          resolve()
-        }, 100);
+      await runSoon(() => {
+        const joinCallButton = document.getElementById('btn-join-call')
+        joinCallButton.click()
       })
       expect(localVideo.innerHTML).toMatch('<video')
+    })
+
+    it('triggers #callStarted', async () => {
+      const controllerEl = document.getElementById('controller')
+      const controller = application.getControllerForElementAndIdentifier(controllerEl, 'video-call')
+
+      const callStarted = jest.fn()
+      controller.callStarted = callStarted
+
+      await runSoon(() => {
+        const joinCallButton = document.getElementById('btn-join-call')
+        joinCallButton.click()
+      })
+      expect(callStarted.mock.calls.length).toBe(1)
     })
   })
 })
