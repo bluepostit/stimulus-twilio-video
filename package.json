@@ -11,10 +11,13 @@
     "build": "microbundle",
     "clean": "rm -f dist/*",
     "dev": "npm run clean && microbundle watch",
-    "lint": "prettier --check src/*.js",
-    "format": "prettier --write src/*.js",
-    "prepare": "install-peers && npm run clean && npm run build"
+    "lint": "prettier --check src test",
+    "format": "prettier --write src test",
+    "prepare": "install-peers && npm run clean && npm run build",
+    "test": "jest",
+    "test:watch": "jest --watch"
   },
+  "browserslist": "> 0.25%, not dead",
   "keywords": [
     "twilio",
     "video",
@@ -38,7 +41,9 @@
     "@babel/plugin-proposal-class-properties": "^7.16.0",
     "babel-preset-env": "^1.7.0",
     "install-peers-cli": "^2.2.0",
+    "jest": "^27.4.3",
     "microbundle": "^0.14.2",
+    "mutationobserver-shim": "^0.3.7",
     "prettier": "^2.5.0"
   }
 }
