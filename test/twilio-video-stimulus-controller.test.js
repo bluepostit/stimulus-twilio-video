@@ -27,6 +27,11 @@ const runSoon = async callback => {
   })
 }
 
+const getController = (application) => {
+  const controllerEl = document.getElementById('controller')
+  return application.getControllerForElementAndIdentifier(controllerEl, 'video-call')
+}
+
 describe('TwilioVideoStimulusController', () => {
   let application
 
@@ -48,9 +53,7 @@ describe('TwilioVideoStimulusController', () => {
     })
 
     it('triggers #callStarted', async () => {
-      const controllerEl = document.getElementById('controller')
-      const controller = application.getControllerForElementAndIdentifier(controllerEl, 'video-call')
-
+      const controller = getController(application)
       const callStarted = jest.fn()
       controller.callStarted = callStarted
 
@@ -59,6 +62,41 @@ describe('TwilioVideoStimulusController', () => {
         joinCallButton.click()
       })
       expect(callStarted.mock.calls.length).toBe(1)
+    })
+  })
+
+  describe('#endCall', () => {
+    it('removes the video element from the localVideo target', async () => {
+      const localVideo = document.getElementById('local-video')
+
+      await runSoon(() => {
+        const joinCallButton = document.getElementById('btn-join-call')
+        joinCallButton.click()
+      })
+      expect(localVideo.innerHTML).toMatch('<video')
+
+      await runSoon(() => {
+        const endCallButton = document.getElementById('btn-end-call')
+        endCallButton.click()
+      })
+      expect(localVideo.innerHTML).toMatch('')
+    })
+
+    it('triggers #callEnded', async () => {
+      const controller = getController(application)
+      const callEnded = jest.fn()
+      controller.callEnded = callEnded
+
+      await runSoon(() => {
+        const joinCallButton = document.getElementById('btn-join-call')
+        joinCallButton.click()
+      })
+      expect(callEnded.mock.calls.length).toBe(0)
+      await runSoon(() => {
+        const endCallButton = document.getElementById('btn-end-call')
+        endCallButton.click()
+      })
+      expect(callEnded.mock.calls.length).toBe(1)
     })
   })
 })

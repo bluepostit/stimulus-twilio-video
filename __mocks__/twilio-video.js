@@ -27,6 +27,14 @@ class Room {
   on(key, _func) {
     // console.log(`${key} called`)
   }
+
+  disconnect() {}
+
+  get localParticipant() {
+    return {
+      tracks: []
+    }
+  }
 }
 
 const createLocalVideoTrack = () => {
