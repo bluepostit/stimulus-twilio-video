@@ -1,6 +1,6 @@
 {
   "name": "stimulus-twilio-video",
-  "version": "1.0.8",
+  "version": "1.0.9",
   "description": "Stimulus controller for video chat with Twilio",
   "source": "src/twilio-video-stimulus-controller.js",
   "files": [
@@ -40,6 +40,7 @@
   "devDependencies": {
     "@babel/plugin-proposal-class-properties": "^7.16.0",
     "babel-preset-env": "^1.7.0",
+    "core-js": "^3.19.2",
     "install-peers-cli": "^2.2.0",
     "jest": "^27.4.3",
     "microbundle": "^0.14.2",
